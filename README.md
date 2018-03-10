@@ -1,0 +1,1 @@
+# embedded-qpid-spring-boot-starter
