@@ -60,8 +60,9 @@ public class EmbeddedBroker implements SmartLifecycle {
     final Map<String, Object> attributes = new HashMap<>();
     URL initialConfig = EmbeddedBroker.class.getClassLoader().getResource(INITIAL_CONFIGURATION);
     attributes.put("type", "Memory");
+    attributes.put("qpid.amqp_port", this.properties.getPort());
     attributes.put("initialConfigurationLocation", initialConfig.toExternalForm());
-    attributes.put("startupLoggedToSystemOut", true);
+    attributes.put("startupLoggedToSystemOut", this.properties.getLogs().isStartupLoggedToSystemOut());
     return attributes;
   }
 }

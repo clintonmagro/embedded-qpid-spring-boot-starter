@@ -1,0 +1,45 @@
+{
+  "groups": [
+    {
+      "name": "embedded.qpid",
+      "type": "com.mc.embedded.qpid.config.EmbeddedQpidProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "embedded.qpid.auto-start",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.mc.embedded.qpid.config.EmbeddedQpidProperties",
+      "sourceMethod": "isAutoStart",
+      "defaultValue": true
+    },
+    {
+      "name": "embedded.qpid.port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.mc.embedded.qpid.config.EmbeddedQpidProperties",
+      "sourceMethod": "getPort",
+      "defaultValue": "${spring.rabbitmq.port}"
+    },
+    {
+      "name":"embedded.qpid.logs.startup-logged-to-system-out",
+      "type":"java.lang.Boolean",
+      "sourceType": "com.mc.embedded.qpid.config.EmbeddedQpidProperties",
+      "defaultValue": true
+    }
+  ],
+  "hints": [
+    {
+      "name": "embedded.qpid.auto-start",
+      "values": [
+        {
+          "value": "true",
+          "description": "True for AutoStart."
+        },
+        {
+          "value": "false",
+          "description": "False if you prefer to use JUnit Rule for individual tests."
+        }
+      ]
+    }
+  ]
+}
