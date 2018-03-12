@@ -12,8 +12,6 @@ import java.util.Map;
 
 public class EmbeddedBroker implements SmartLifecycle {
 
-  private static final String INITIAL_CONFIGURATION = "qpid-config.json";
-
   private final EmbeddedQpidProperties properties;
   private final SystemLauncher qpidLauncher;
   private boolean running;
@@ -58,9 +56,11 @@ public class EmbeddedBroker implements SmartLifecycle {
 
   private Map<String, Object> createSystemConfig() {
     final Map<String, Object> attributes = new HashMap<>();
-    URL initialConfig = EmbeddedBroker.class.getClassLoader().getResource(INITIAL_CONFIGURATION);
+    final URL initialConfig = EmbeddedBroker.class.getClassLoader().getResource(this.properties.getConfigFilePath());
     attributes.put("type", "Memory");
     attributes.put("qpid.amqp_port", this.properties.getPort());
+    attributes.put("qpid.username", this.properties.getUsername());
+    attributes.put("qpid.password", this.properties.getPassword());
     attributes.put("initialConfigurationLocation", initialConfig.toExternalForm());
     attributes.put("startupLoggedToSystemOut", this.properties.getLogs().isStartupLoggedToSystemOut());
     return attributes;

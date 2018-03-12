@@ -25,6 +25,20 @@
       "type":"java.lang.Boolean",
       "sourceType": "com.mc.embedded.qpid.config.EmbeddedQpidProperties",
       "defaultValue": true
+    },
+    {
+      "name": "embedded.qpid.username",
+      "type": "java.lang.String",
+      "sourceType": "com.mc.embedded.qpid.config.EmbeddedQpidProperties",
+      "sourceMethod": "getUsername",
+      "defaultValue": "${spring.rabbitmq.username}"
+    },
+    {
+      "name": "embedded.qpid.password",
+      "type": "java.lang.String",
+      "sourceType": "com.mc.embedded.qpid.config.EmbeddedQpidProperties",
+      "sourceMethod": "getPassword",
+      "defaultValue": "${spring.rabbitmq.password}"
     }
   ],
   "hints": [
@@ -38,6 +52,15 @@
         {
           "value": "false",
           "description": "False if you prefer to use JUnit Rule for individual tests."
+        }
+      ]
+    },
+    {
+      "name":"embedded.qpid.config-file-path",
+      "values":[
+        {
+          "value": "qpid-config.json",
+          "description":"Loaded as classpath resource."
         }
       ]
     }

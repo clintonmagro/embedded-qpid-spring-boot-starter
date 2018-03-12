@@ -3,13 +3,13 @@
   "modelVersion": "7.0",
   "authenticationproviders": [
     {
-      "name": "Scram",
-      "type": "SCRAM-SHA-256",
+      "name": "plain",
+      "type": "Plain",
       "users": [
         {
-          "name": "admin",
+          "name": "${qpid.username}",
           "type": "managed",
-          "password": "RlZheCx8NY5fmWpshDA2P1gULzLPA8GtoCe5uJgr4ms=,,mnHeeEsCki4ql4slKwooAncju7cL+5QLSxhUMzmvMJw=,z95S+Lmz5v5mESAmov1mJZN17310oMuAPyJIWtg4gBo=,4096"
+          "password": "${qpid.password}"
         }
       ]
     }
@@ -23,7 +23,7 @@
         "AMQP_0_9_1",
         "AMQP_1_0"
       ],
-      "authenticationProvider": "Scram",
+      "authenticationProvider": "plain",
       "virtualhostaliases": [
         {
           "name": "nameAlias",
@@ -40,12 +40,10 @@
       ]
     }
   ],
-  "virtualhostnodes": [
-    {
-      "name": "default",
-      "type": "Memory",
-      "defaultVirtualHostNode": "true",
-      "virtualHostInitialConfiguration": "{\"type\": \"Memory\", \"nodeAutoCreationPolicies\": [{\"patterns\":\".*\",\"createdOnPublish\":\"true\",\"createdOnConsume\":\"true\",\"nodeType\":\"queue\",\"attributes\":{}}] }"
-    }
-  ]
+  "virtualhostnodes" : [ {
+    "name" : "default",
+    "type" : "JSON",
+    "defaultVirtualHostNode" : "true",
+    "virtualHostInitialConfiguration" : "{\"type\" : \"Memory\",\"name\" : \"default\",\"modelVersion\" : \"6.0\"}"
+  } ]
 }

@@ -1,4 +1,0 @@
-embedded:
-  qpid:
-    log:
-      startup-logged-to-system-out: true
