@@ -47,12 +47,17 @@
             <groupId>com.mc.embedded.qpid</groupId>
             <artifactId>embedded-qpid-spring-boot-starter</artifactId>
             <version>${embedded-qpid.version}</version>
-            <scope>test</scope>
+            <!--<scope>test</scope>-->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.minidev</groupId>
+            <artifactId>json-smart</artifactId>
+            <version>2.2.1</version>
         </dependency>
     </dependencies>
 
