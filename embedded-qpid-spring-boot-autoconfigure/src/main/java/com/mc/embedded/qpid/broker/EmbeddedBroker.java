@@ -1,16 +1,17 @@
 package com.mc.embedded.qpid.broker;
 
 import com.mc.embedded.qpid.config.EmbeddedQpidProperties;
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.qpid.server.SystemLauncher;
-import org.apache.qpid.server.SystemLauncherListener;
-import org.springframework.context.SmartLifecycle;
-
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.qpid.server.SystemLauncher;
+import org.apache.qpid.server.SystemLauncherListener;
+import org.springframework.context.Phased;
+import org.springframework.context.SmartLifecycle;
+import org.springframework.core.Ordered;
 
 @Slf4j
 public class EmbeddedBroker implements SmartLifecycle {
@@ -62,7 +63,7 @@ public class EmbeddedBroker implements SmartLifecycle {
 
   @Override
   public int getPhase() {
-    return Integer.MAX_VALUE;
+    return Ordered.HIGHEST_PRECEDENCE;
   }
 
   private Map<String, Object> createSystemConfig() {

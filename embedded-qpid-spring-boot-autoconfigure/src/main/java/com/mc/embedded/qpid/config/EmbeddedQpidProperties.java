@@ -30,6 +30,7 @@ public class EmbeddedQpidProperties {
 
   @Data
   public class Log {
+
     private boolean startupLoggedToSystemOut = true;
   }
 }

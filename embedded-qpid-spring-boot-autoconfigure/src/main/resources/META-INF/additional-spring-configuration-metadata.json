@@ -21,8 +21,8 @@
       "defaultValue": "${spring.rabbitmq.port}"
     },
     {
-      "name":"embedded.qpid.logs.startup-logged-to-system-out",
-      "type":"java.lang.Boolean",
+      "name": "embedded.qpid.logs.startup-logged-to-system-out",
+      "type": "java.lang.Boolean",
       "sourceType": "com.mc.embedded.qpid.config.EmbeddedQpidProperties",
       "defaultValue": true
     },
@@ -56,11 +56,11 @@
       ]
     },
     {
-      "name":"embedded.qpid.config-file-path",
-      "values":[
+      "name": "embedded.qpid.config-file-path",
+      "values": [
         {
           "value": "qpid-config.json",
-          "description":"Loaded as classpath resource."
+          "description": "Loaded as classpath resource."
         }
       ]
     }

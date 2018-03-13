@@ -1,6 +1,10 @@
 package com.mc.embedded.qpid.sample.config;
 
-import org.springframework.amqp.core.*;
+import org.springframework.amqp.core.AmqpAdmin;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.DirectExchange;
+import org.springframework.amqp.core.Exchange;
+import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListenerConfigurer;
 import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
@@ -66,10 +70,10 @@ public class RabbitConfig implements RabbitListenerConfigurer {
     amqpAdmin.declareQueue(messageInQueue);
 
     final Binding binding = new Binding(messageInQueue.getName(),
-        Binding.DestinationType.QUEUE,
-        exchange.getName(),
-        rkMsgIn,
-        null);
+                                        Binding.DestinationType.QUEUE,
+                                        exchange.getName(),
+                                        rkMsgIn,
+                                        null);
 
     amqpAdmin.declareBinding(binding);
 

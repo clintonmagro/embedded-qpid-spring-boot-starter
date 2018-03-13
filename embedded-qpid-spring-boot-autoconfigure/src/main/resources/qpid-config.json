@@ -40,10 +40,12 @@
       ]
     }
   ],
-  "virtualhostnodes" : [ {
-    "name" : "default",
-    "type" : "JSON",
-    "defaultVirtualHostNode" : "true",
-    "virtualHostInitialConfiguration" : "{\"type\" : \"Memory\",\"name\" : \"default\",\"modelVersion\" : \"6.0\"}"
-  } ]
+  "virtualhostnodes": [
+    {
+      "name": "default",
+      "type": "JSON",
+      "defaultVirtualHostNode": "true",
+      "virtualHostInitialConfiguration": "{\"type\" : \"Memory\",\"name\" : \"default\",\"modelVersion\" : \"6.0\"}"
+    }
+  ]
 }
