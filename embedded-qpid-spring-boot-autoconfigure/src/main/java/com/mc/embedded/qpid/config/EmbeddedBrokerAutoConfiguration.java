@@ -2,6 +2,7 @@ package com.mc.embedded.qpid.config;
 
 import com.mc.embedded.qpid.broker.EmbeddedBroker;
 import org.springframework.amqp.core.AmqpAdmin;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
@@ -15,10 +16,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @AutoConfigureBefore(RabbitAutoConfiguration.class)
 @EnableConfigurationProperties(EmbeddedQpidProperties.class)
-@ConditionalOnClass({RabbitTemplate.class, AmqpAdmin.class, RabbitProperties.class})
+@ConditionalOnClass({ConnectionFactory.class, AmqpAdmin.class, RabbitTemplate.class, RabbitProperties.class})
 public class EmbeddedBrokerAutoConfiguration {
 
-  @Bean
+  static final String EMBEDDED_QPID_BROKER_BEAN_NAME = "embeddedQpidBroker";
+
+  @Bean(EMBEDDED_QPID_BROKER_BEAN_NAME)
   @ConditionalOnMissingBean(EmbeddedBroker.class)
   public EmbeddedBroker embeddedBroker(final EmbeddedQpidProperties properties) {
     return new EmbeddedBroker(properties);
