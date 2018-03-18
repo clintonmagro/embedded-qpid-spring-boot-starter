@@ -1,8 +1,5 @@
 package com.mc.embedded.qpid.config;
 
-import static com.mc.embedded.qpid.config.EmbeddedBrokerAutoConfiguration.EMBEDDED_QPID_BROKER_BEAN_NAME;
-
-import java.util.Arrays;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -12,10 +9,12 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-@Component
+import java.util.Arrays;
+
+import static com.mc.embedded.qpid.config.EmbeddedBrokerAutoConfiguration.EMBEDDED_QPID_BROKER_BEAN_NAME;
+
 public class DependentBeanProcessor implements BeanFactoryPostProcessor {
 
   @Override

@@ -26,5 +26,10 @@ public class EmbeddedBrokerAutoConfiguration {
   public EmbeddedBroker embeddedBroker(final EmbeddedQpidProperties properties) {
     return new EmbeddedBroker(properties);
   }
+
+  @Bean
+  public DependentBeanProcessor dependentBeanProcessor() {
+    return new DependentBeanProcessor();
+  }
 }
 
