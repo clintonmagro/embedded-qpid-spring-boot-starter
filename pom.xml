@@ -6,7 +6,7 @@
 
     <groupId>com.mc.embedded.qpid</groupId>
     <artifactId>embedded-qpid</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <modules>
         <module>embedded-qpid-spring-boot-starter</module>
