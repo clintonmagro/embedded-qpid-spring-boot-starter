@@ -23,6 +23,13 @@
         <url>https://github.com/clintonmagro/embedded-qpid-spring-boot-starter.git</url>
     </scm>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <modules>
         <module>embedded-qpid-spring-boot-starter</module>
         <module>embedded-qpid-spring-boot-autoconfigure</module>
