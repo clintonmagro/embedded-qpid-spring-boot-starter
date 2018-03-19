@@ -7,7 +7,7 @@
 
     <groupId>net.clintonmagro.embedded.qpid</groupId>
     <artifactId>embedded-qpid</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
 
     <url>http://maven.apache.org</url>
 
