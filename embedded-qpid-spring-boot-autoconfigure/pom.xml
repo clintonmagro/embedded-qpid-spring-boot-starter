@@ -8,7 +8,7 @@
     <parent>
         <groupId>net.clintonmagro.embedded.qpid</groupId>
         <artifactId>embedded-qpid</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>embedded-qpid-spring-boot-autoconfigure</artifactId>
