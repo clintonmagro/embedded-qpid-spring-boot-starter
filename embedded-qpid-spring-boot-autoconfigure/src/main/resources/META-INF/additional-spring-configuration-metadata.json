@@ -2,41 +2,41 @@
   "groups": [
     {
       "name": "embedded.qpid",
-      "type": "com.mc.embedded.qpid.config.EmbeddedQpidProperties"
+      "type": "net.clintonmagro.embedded.qpid.config.EmbeddedQpidProperties"
     }
   ],
   "properties": [
     {
       "name": "embedded.qpid.auto-start",
       "type": "java.lang.Boolean",
-      "sourceType": "com.mc.embedded.qpid.config.EmbeddedQpidProperties",
+      "sourceType": "net.clintonmagro.embedded.qpid.config.EmbeddedQpidProperties",
       "sourceMethod": "isAutoStart",
       "defaultValue": true
     },
     {
       "name": "embedded.qpid.port",
       "type": "java.lang.Integer",
-      "sourceType": "com.mc.embedded.qpid.config.EmbeddedQpidProperties",
+      "sourceType": "net.clintonmagro.embedded.qpid.config.EmbeddedQpidProperties",
       "sourceMethod": "getPort",
       "defaultValue": "${spring.rabbitmq.port}"
     },
     {
       "name": "embedded.qpid.logs.startup-logged-to-system-out",
       "type": "java.lang.Boolean",
-      "sourceType": "com.mc.embedded.qpid.config.EmbeddedQpidProperties",
+      "sourceType": "net.clintonmagro.embedded.qpid.config.EmbeddedQpidProperties",
       "defaultValue": true
     },
     {
       "name": "embedded.qpid.username",
       "type": "java.lang.String",
-      "sourceType": "com.mc.embedded.qpid.config.EmbeddedQpidProperties",
+      "sourceType": "net.clintonmagro.embedded.qpid.config.EmbeddedQpidProperties",
       "sourceMethod": "getUsername",
       "defaultValue": "${spring.rabbitmq.username}"
     },
     {
       "name": "embedded.qpid.password",
       "type": "java.lang.String",
-      "sourceType": "com.mc.embedded.qpid.config.EmbeddedQpidProperties",
+      "sourceType": "net.clintonmagro.embedded.qpid.config.EmbeddedQpidProperties",
       "sourceMethod": "getPassword",
       "defaultValue": "${spring.rabbitmq.password}"
     }

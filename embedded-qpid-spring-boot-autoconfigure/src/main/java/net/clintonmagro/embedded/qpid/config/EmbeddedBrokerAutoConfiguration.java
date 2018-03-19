@@ -1,6 +1,6 @@
-package com.mc.embedded.qpid.config;
+package net.clintonmagro.embedded.qpid.config;
 
-import com.mc.embedded.qpid.broker.EmbeddedBroker;
+import net.clintonmagro.embedded.qpid.broker.EmbeddedBroker;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

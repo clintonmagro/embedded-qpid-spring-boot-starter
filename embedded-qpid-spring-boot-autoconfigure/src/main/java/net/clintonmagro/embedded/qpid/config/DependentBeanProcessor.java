@@ -1,4 +1,4 @@
-package com.mc.embedded.qpid.config;
+package net.clintonmagro.embedded.qpid.config;
 
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -8,12 +8,9 @@ import org.springframework.beans.factory.BeanFactoryUtils;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
 import org.springframework.util.StringUtils;
 
 import java.util.Arrays;
-
-import static com.mc.embedded.qpid.config.EmbeddedBrokerAutoConfiguration.EMBEDDED_QPID_BROKER_BEAN_NAME;
 
 public class DependentBeanProcessor implements BeanFactoryPostProcessor {
 
@@ -25,7 +22,7 @@ public class DependentBeanProcessor implements BeanFactoryPostProcessor {
 
           for (final String beanName : dependantBeanNames) {
             final BeanDefinition beanDefinition = beanFactory.getBeanDefinition(beanName);
-            beanDefinition.setDependsOn(StringUtils.addStringToArray(beanDefinition.getDependsOn(), EMBEDDED_QPID_BROKER_BEAN_NAME));
+            beanDefinition.setDependsOn(StringUtils.addStringToArray(beanDefinition.getDependsOn(), EmbeddedBrokerAutoConfiguration.EMBEDDED_QPID_BROKER_BEAN_NAME));
           }
         });
   }
