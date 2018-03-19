@@ -19,7 +19,7 @@ public class DependentBeanProcessor implements BeanFactoryPostProcessor {
 
   @Override
   public void postProcessBeanFactory(final ConfigurableListableBeanFactory beanFactory) throws BeansException {
-    Arrays.asList(ConnectionFactory.class, AmqpAdmin.class, RabbitTemplate.class, RabbitProperties.class)
+    Arrays.asList(ConnectionFactory.class, AmqpAdmin.class, RabbitTemplate.class)
         .forEach(dependantBeanClass -> {
           final String[] dependantBeanNames = BeanFactoryUtils.beanNamesForTypeIncludingAncestors(beanFactory, dependantBeanClass, true, false);
 

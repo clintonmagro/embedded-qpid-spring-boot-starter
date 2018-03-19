@@ -2,6 +2,7 @@ package com.mc.embedded.qpid.config;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -20,12 +21,10 @@ public class EmbeddedQpidProperties {
 
   private Log logs = new Log();
 
-  public EmbeddedQpidProperties(@Value("${spring.rabbitmq.port:5672}") final int port,
-                                @Value("${spring.rabbitmq.username:guest}") final String username,
-                                @Value("${spring.rabbitmq.password:guest}") final String password) {
-    this.port = port;
-    this.username = username;
-    this.password = password;
+  public EmbeddedQpidProperties(final RabbitProperties rabbitProperties) {
+    this.port = rabbitProperties.getPort();
+    this.username = rabbitProperties.getUsername();
+    this.password = rabbitProperties.getPassword();
   }
 
   @Data

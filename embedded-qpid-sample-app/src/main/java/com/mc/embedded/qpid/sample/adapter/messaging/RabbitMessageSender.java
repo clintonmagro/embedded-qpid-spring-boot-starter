@@ -1,5 +1,6 @@
 package com.mc.embedded.qpid.sample.adapter.messaging;
 
+import com.mc.embedded.qpid.sample.config.AppQueueConfig;
 import com.mc.embedded.qpid.sample.domain.model.MyMessage;
 import com.mc.embedded.qpid.sample.domain.port.MessageSender;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,6 @@ public class RabbitMessageSender implements MessageSender {
 
   @Override
   public void sendMessage(final MyMessage myMessage) {
-    rabbitTemplate.convertAndSend("RK_MESSAGE_OUT", myMessage);
+    rabbitTemplate.convertAndSend(AppQueueConfig.RK_MSG_OUT, myMessage);
   }
 }

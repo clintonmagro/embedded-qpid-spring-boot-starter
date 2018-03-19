@@ -10,7 +10,7 @@ import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 import org.springframework.messaging.handler.annotation.support.DefaultMessageHandlerMethodFactory;
 
 @Configuration
-public class RabbitConfig implements RabbitListenerConfigurer {
+public class AppQueueConfig {
 
   public static final String EX_MESSAGES = "ex.messages";
 
@@ -37,28 +37,6 @@ public class RabbitConfig implements RabbitListenerConfigurer {
   @Bean
   public Queue messageInQueue(final AmqpAdmin amqpAdmin, final Exchange exchange) {
     return getQueue(amqpAdmin, exchange, Q_MSG_IN, RK_MSG_IN);
-  }
-
-  @Bean
-  public Jackson2JsonMessageConverter producerJackson2MessageConverter() {
-    return new Jackson2JsonMessageConverter();
-  }
-
-  @Bean
-  public MappingJackson2MessageConverter consumerJackson2MessageConverter() {
-    return new MappingJackson2MessageConverter();
-  }
-
-  @Bean
-  public DefaultMessageHandlerMethodFactory messageHandlerMethodFactory() {
-    final DefaultMessageHandlerMethodFactory factory = new DefaultMessageHandlerMethodFactory();
-    factory.setMessageConverter(consumerJackson2MessageConverter());
-    return factory;
-  }
-
-  @Override
-  public void configureRabbitListeners(final RabbitListenerEndpointRegistrar registrar) {
-    registrar.setMessageHandlerMethodFactory(messageHandlerMethodFactory());
   }
 
   private Queue getQueue(AmqpAdmin amqpAdmin, Exchange exchange, String qMsgIn, String rkMsgIn) {
