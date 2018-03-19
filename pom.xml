@@ -7,7 +7,7 @@
 
     <groupId>net.clintonmagro.embedded.qpid</groupId>
     <artifactId>embedded-qpid</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 
     <url>http://maven.apache.org</url>
 
@@ -22,6 +22,13 @@
     <scm>
         <url>https://github.com/clintonmagro/embedded-qpid-spring-boot-starter.git</url>
     </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <modules>
         <module>embedded-qpid-spring-boot-starter</module>
