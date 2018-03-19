@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.mc.embedded.qpid</groupId>
         <artifactId>embedded-qpid</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>embedded-qpid-spring-boot-starter</artifactId>
