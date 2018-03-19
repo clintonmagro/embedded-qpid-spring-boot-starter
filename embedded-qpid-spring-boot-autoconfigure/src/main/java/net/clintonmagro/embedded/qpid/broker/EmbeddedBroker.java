@@ -1,6 +1,6 @@
-package com.mc.embedded.qpid.broker;
+package net.clintonmagro.embedded.qpid.broker;
 
-import com.mc.embedded.qpid.config.EmbeddedQpidProperties;
+import net.clintonmagro.embedded.qpid.config.EmbeddedQpidProperties;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.qpid.server.SystemLauncher;

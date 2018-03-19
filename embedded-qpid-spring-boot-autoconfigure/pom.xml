@@ -3,9 +3,10 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
     <name>Embedded QPID :: Autoconfigure</name>
+    <description>Embedded QPID Autoconfigure - The actual QPID setup and configuration</description>
 
     <parent>
-        <groupId>com.mc.embedded.qpid</groupId>
+        <groupId>net.clintonmagro.embedded.qpid</groupId>
         <artifactId>embedded-qpid</artifactId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
