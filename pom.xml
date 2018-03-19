@@ -13,7 +13,6 @@
     <modules>
         <module>embedded-qpid-spring-boot-starter</module>
         <module>embedded-qpid-spring-boot-autoconfigure</module>
-        <module>embedded-qpid-sample-app</module>
     </modules>
 
     <properties>
@@ -22,29 +21,38 @@
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+
+        <jgitflow-plugin.version>1.0-m5.1</jgitflow-plugin.version>
     </properties>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>external.atlassian.jgitflow</groupId>
+                    <artifactId>jgitflow-maven-plugin</artifactId>
+                    <version>${jgitflow-plugin.version}</version>
+                    <configuration>
+                        <flowInitContext>
+                            <masterBranchName>master</masterBranchName>
+                            <developBranchName>develop</developBranchName>
+                            <featureBranchPrefix>feature-</featureBranchPrefix>
+                            <releaseBranchPrefix>release-</releaseBranchPrefix>
+                            <hotfixBranchPrefix>hotfix-</hotfixBranchPrefix>
+                            <versionTagPrefix>version-</versionTagPrefix>
+                        </flowInitContext>
+                        <noDeploy>true</noDeploy>
+                        <squash>false</squash>
+                        <scmCommentPrefix>[RELEASE]</scmCommentPrefix>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
         <plugins>
             <plugin>
                 <groupId>external.atlassian.jgitflow</groupId>
                 <artifactId>jgitflow-maven-plugin</artifactId>
-                <version>1.0-m5.1</version>
-                <configuration>
-                    <flowInitContext>
-                        <masterBranchName>master</masterBranchName>
-                        <developBranchName>develop</developBranchName>
-                        <featureBranchPrefix>feature/</featureBranchPrefix>
-                        <releaseBranchPrefix>release/</releaseBranchPrefix>
-                        <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
-                        <versionTagPrefix>version/</versionTagPrefix>
-                    </flowInitContext>
-                    <username>${env.GITHUB_USERNAME}</username>
-                    <password>${env.GITHUB_PASSWORD}</password>
-                    <noDeploy>true</noDeploy>
-                    <squash>true</squash>
-                    <scmCommentPrefix>[RELEASE] </scmCommentPrefix>
-                </configuration>
             </plugin>
         </plugins>
     </build>
