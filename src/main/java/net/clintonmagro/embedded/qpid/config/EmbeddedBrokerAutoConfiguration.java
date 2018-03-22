@@ -28,7 +28,7 @@ public class EmbeddedBrokerAutoConfiguration {
   }
 
   @Bean
-  public DependentBeanProcessor dependentBeanProcessor() {
+  public static DependentBeanProcessor dependentBeanProcessor() {
     return new DependentBeanProcessor();
   }
 }
