@@ -79,11 +79,6 @@
     </dependency>
     <dependency>
       <groupId>org.apache.qpid</groupId>
-      <artifactId>qpid-broker-plugins-amqp-1-0-protocol</artifactId>
-      <version>${apache-qpid.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.qpid</groupId>
       <artifactId>qpid-broker-plugins-memory-store</artifactId>
       <version>${apache-qpid.version}</version>
     </dependency>

@@ -77,9 +77,9 @@ public class EmbeddedBroker implements SmartLifecycle {
     attributes.put("initialConfigurationLocation", initialConfig.toExternalForm());
     attributes.put("startupLoggedToSystemOut", this.properties.getLogs().isStartupLoggedToSystemOut());
 
+    attributes.put("qpid.broker.defaultPreferenceStoreAttributes", "{\"type\": \"Noop\"}");
     attributes.put("qpid.amqp_port", this.properties.getPort());
-    attributes.put("qpid.username", this.properties.getUsername());
-    attributes.put("qpid.password", this.properties.getPassword());
+
     return attributes;
   }
 }

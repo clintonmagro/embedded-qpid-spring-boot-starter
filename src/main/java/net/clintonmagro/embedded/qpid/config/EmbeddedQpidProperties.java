@@ -14,21 +14,18 @@ public class EmbeddedQpidProperties {
   private boolean autoStart = true;
   private String configFilePath = "qpid-config.json";
 
-  private String username;
-  private String password;
+  private String virtualHost;
   private int port;
 
   private Log logs = new Log();
 
   public EmbeddedQpidProperties(final RabbitProperties rabbitProperties) {
     this.port = rabbitProperties.getPort();
-    this.username = rabbitProperties.getUsername();
-    this.password = rabbitProperties.getPassword();
+    this.virtualHost = rabbitProperties.getVirtualHost();
   }
 
   @Data
   public class Log {
-
     private boolean startupLoggedToSystemOut = true;
   }
 }
