@@ -77,6 +77,7 @@ public class EmbeddedBroker implements SmartLifecycle {
     attributes.put("initialConfigurationLocation", initialConfig.toExternalForm());
     attributes.put("startupLoggedToSystemOut", this.properties.getLogs().isStartupLoggedToSystemOut());
 
+    //TODO: FIXME: Somehow the following 2 lines are not really being passed to json
     attributes.put("qpid.broker.defaultPreferenceStoreAttributes", "{\"type\": \"Noop\"}");
     attributes.put("qpid.amqp_port", this.properties.getPort());
 
