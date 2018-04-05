@@ -1,23 +1,27 @@
 package net.clintonmagro.embedded.qpid.broker;
 
-import net.clintonmagro.embedded.qpid.config.EmbeddedQpidProperties;
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.qpid.server.SystemLauncher;
-import org.apache.qpid.server.SystemLauncherListener;
-import org.springframework.context.SmartLifecycle;
-import org.springframework.core.Ordered;
-
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import lombok.Getter;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
+import net.clintonmagro.embedded.qpid.config.EmbeddedQpidProperties;
+import org.apache.qpid.server.SystemLauncher;
+import org.apache.qpid.server.SystemLauncherListener;
+import org.springframework.context.SmartLifecycle;
+import org.springframework.core.Ordered;
+import org.springframework.util.SocketUtils;
 
 @Slf4j
 public class EmbeddedBroker implements SmartLifecycle {
 
   private final EmbeddedQpidProperties properties;
   private final SystemLauncher qpidLauncher;
+
+  @Getter
+  private Integer port;
 
   private boolean running;
 
@@ -77,10 +81,13 @@ public class EmbeddedBroker implements SmartLifecycle {
     attributes.put("initialConfigurationLocation", initialConfig.toExternalForm());
     attributes.put("startupLoggedToSystemOut", this.properties.getLogs().isStartupLoggedToSystemOut());
 
-    //TODO: FIXME: Somehow the following 2 lines are not really being passed to json
-    attributes.put("qpid.broker.defaultPreferenceStoreAttributes", "{\"type\": \"Noop\"}");
-    attributes.put("qpid.amqp_port", this.properties.getPort());
-
+    determinePort();
     return attributes;
+  }
+
+  private void determinePort() {
+    this.port = this.properties.getPort() == 0 ? SocketUtils.findAvailableTcpPort() : this.properties.getPort();
+    System.setProperty("spring.rabbitmq.port", this.port.toString());
+    System.setProperty("qpid.amqp_port", this.port.toString());
   }
 }

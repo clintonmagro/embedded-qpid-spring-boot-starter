@@ -1,5 +1,6 @@
 package net.clintonmagro.embedded.qpid.config;
 
+import java.util.Arrays;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -10,8 +11,6 @@ import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
 import org.springframework.util.StringUtils;
-
-import java.util.Arrays;
 
 public class DependentBeanProcessor implements BeanFactoryPostProcessor {
 
