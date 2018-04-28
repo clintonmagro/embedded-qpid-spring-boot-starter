@@ -7,7 +7,7 @@
 
   <groupId>net.clintonmagro.embedded.qpid</groupId>
   <artifactId>embedded-qpid-spring-boot-starter</artifactId>
-  <version>1.0.5</version>
+  <version>1.0.6</version>
 
   <url>http://maven.apache.org</url>
 
@@ -22,6 +22,18 @@
   <scm>
     <url>https://github.com/clintonmagro/embedded-qpid-spring-boot-starter.git</url>
   </scm>
+
+  <developers>
+    <developer>
+      <id>clinton.magro</id>
+      <name>Clinton Alistair Magro</name>
+      <email>clintonmagro@gmail.com</email>
+      <roles>
+        <role>architect</role>
+        <role>developer</role>
+      </roles>
+    </developer>
+  </developers>
 
   <distributionManagement>
     <snapshotRepository>
