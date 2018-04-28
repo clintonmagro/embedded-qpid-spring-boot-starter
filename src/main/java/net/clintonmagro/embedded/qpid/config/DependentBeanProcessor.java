@@ -12,6 +12,20 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
 import org.springframework.util.StringUtils;
 
+/**
+ * This DependentBeanProcessor will ensure that the specified classes are dependent on the EmbeddedBroker so that Spring does not load them up before the broker
+ * has had the chance to start. This is important because these classes will attempt to communicate on the specified spring.rabbitmq.port and if the broker
+ * is not yet running the context will fail to load.
+ *
+ * Classes that depend on the Broker
+ * @see org.springframework.amqp.rabbit.connection.ConnectionFactory
+ * @see org.springframework.amqp.core.AmqpAdmin
+ * @see org.springframework.amqp.rabbit.core.RabbitTemplate
+ * @see org.springframework.boot.autoconfigure.amqp.RabbitProperties
+ *
+ * The embedded broker class being depended on by the above classes
+ * @see net.clintonmagro.embedded.qpid.broker.EmbeddedBroker
+ */
 public class DependentBeanProcessor implements BeanFactoryPostProcessor {
 
   @Override

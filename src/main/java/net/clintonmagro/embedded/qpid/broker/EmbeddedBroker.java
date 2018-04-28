@@ -25,6 +25,13 @@ public class EmbeddedBroker implements SmartLifecycle {
 
   private boolean running;
 
+  /**
+   * The EmbeddedBroker will automatically start provided the embedded.broker.auto-start property is true (default behaviour).
+   * Although this class extends SmartLifecycle to provide Springs with ways to auto handle start up and shutdown, it needed to be
+   * force started because it needs to start immediately during instantiation to avoid the situation were other beans in
+   * client code needs to make use of the broker but starting is delayed. Doing so ensures that the broker is started as soon as
+   * possible.
+   */
   public EmbeddedBroker(final EmbeddedQpidProperties properties) {
     this.properties = properties;
     this.qpidLauncher = new SystemLauncher(new SystemLauncherListener.DefaultSystemLauncherListener());
@@ -87,7 +94,6 @@ public class EmbeddedBroker implements SmartLifecycle {
 
   private void determinePort() {
     this.port = this.properties.getPort() == 0 ? SocketUtils.findAvailableTcpPort() : this.properties.getPort();
-    System.setProperty("spring.rabbitmq.port", this.port.toString());
     System.setProperty("qpid.amqp_port", this.port.toString());
   }
 }

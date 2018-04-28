@@ -19,6 +19,7 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnClass({ConnectionFactory.class, AmqpAdmin.class, RabbitTemplate.class, RabbitProperties.class})
 public class EmbeddedBrokerAutoConfiguration {
 
+  /*The bean name used by the embedded broker and also for qualifying the name from other beans*/
   static final String EMBEDDED_QPID_BROKER_BEAN_NAME = "embeddedQpidBroker";
 
   @Bean

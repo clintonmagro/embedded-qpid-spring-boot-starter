@@ -11,7 +11,7 @@ public class EmbeddedQpidProperties {
 
   private String configFilePath = "qpid-config.json";
   private boolean autoStart = true;
-  private int port = 0;
+  private int port = 5672;
 
   private Log logs = new Log();
 

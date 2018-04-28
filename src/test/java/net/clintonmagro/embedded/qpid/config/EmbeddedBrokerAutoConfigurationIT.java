@@ -11,6 +11,8 @@ import org.junit.runner.RunWith;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Exchange;
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.autoconfigure.AutoConfigurations;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
@@ -48,10 +50,9 @@ public class EmbeddedBrokerAutoConfigurationIT {
         .withUserConfiguration(AmqpConfiguration.class)
         .run((context) -> {
 
-          final EmbeddedBroker embeddedBroker = context.getBean(EmbeddedBroker.class);
-          final EmbeddedQpidProperties qpidProperties = context.getBean(EmbeddedQpidProperties.class);
-//          assertThat(embeddedBroker.getPort()).isEqualTo(qpidProperties.getPort());
-//          assertThat(System.getProperty("spring.rabbitmq.port")).isEqualTo(qpidProperties.getPort());
+          final RabbitTemplate rabbitTemplate = context.getBean(RabbitTemplate.class);
+          rabbitTemplate.convertAndSend("x.direct", "x.queue", "Hello World");
+
         });
   }
 
@@ -67,10 +68,18 @@ public class EmbeddedBrokerAutoConfigurationIT {
 
     @Bean
     public Exchange exchange(final AmqpAdmin amqpAdmin) {
-      final DirectExchange directExchange = new DirectExchange("x.test.direct");
+      final DirectExchange directExchange = new DirectExchange("x.direct");
       amqpAdmin.declareExchange(directExchange);
 
       return directExchange;
+    }
+
+    @Bean
+    public Queue queue(final AmqpAdmin amqpAdmin) {
+      final Queue queue = new Queue("q.test");
+      amqpAdmin.declareQueue(queue);
+
+      return queue;
     }
   }
 }

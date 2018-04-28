@@ -7,18 +7,11 @@
   ],
   "properties": [
     {
-      "name": "embedded.qpid.auto-start",
-      "type": "java.lang.Boolean",
-      "sourceType": "net.clintonmagro.embedded.qpid.config.EmbeddedQpidProperties",
-      "sourceMethod": "isAutoStart",
-      "defaultValue": true
-    },
-    {
       "name": "embedded.qpid.port",
       "type": "java.lang.Integer",
       "sourceType": "net.clintonmagro.embedded.qpid.config.EmbeddedQpidProperties",
       "sourceMethod": "getPort",
-      "defaultValue": "${spring.rabbitmq.port}"
+      "defaultValue": "5672"
     },
     {
       "name": "embedded.qpid.logs.startup-logged-to-system-out",
@@ -27,18 +20,11 @@
       "defaultValue": true
     },
     {
-      "name": "embedded.qpid.username",
+      "name": "embedded.qpid.auto-start",
       "type": "java.lang.String",
       "sourceType": "net.clintonmagro.embedded.qpid.config.EmbeddedQpidProperties",
-      "sourceMethod": "getUsername",
-      "defaultValue": "${spring.rabbitmq.username}"
-    },
-    {
-      "name": "embedded.qpid.password",
-      "type": "java.lang.String",
-      "sourceType": "net.clintonmagro.embedded.qpid.config.EmbeddedQpidProperties",
-      "sourceMethod": "getPassword",
-      "defaultValue": "${spring.rabbitmq.password}"
+      "sourceMethod": "isAutoStart",
+      "defaultValue": "true"
     }
   ],
   "hints": [
@@ -51,7 +37,7 @@
         },
         {
           "value": "false",
-          "description": "False if you prefer to use JUnit Rule for individual tests."
+          "description": "False if you prefer to auto wire EmbeddedBroker and start it manually."
         }
       ]
     },
