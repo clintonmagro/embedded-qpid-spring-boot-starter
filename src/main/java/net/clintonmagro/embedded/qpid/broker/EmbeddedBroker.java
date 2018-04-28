@@ -1,17 +1,18 @@
 package net.clintonmagro.embedded.qpid.broker;
 
-import net.clintonmagro.embedded.qpid.config.EmbeddedQpidProperties;
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.qpid.server.SystemLauncher;
-import org.apache.qpid.server.SystemLauncherListener;
-import org.springframework.context.SmartLifecycle;
-import org.springframework.core.Ordered;
-
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import lombok.Getter;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
+import net.clintonmagro.embedded.qpid.config.EmbeddedQpidProperties;
+import org.apache.qpid.server.SystemLauncher;
+import org.apache.qpid.server.SystemLauncherListener;
+import org.springframework.context.SmartLifecycle;
+import org.springframework.core.Ordered;
+import org.springframework.util.SocketUtils;
 
 @Slf4j
 public class EmbeddedBroker implements SmartLifecycle {
@@ -19,8 +20,18 @@ public class EmbeddedBroker implements SmartLifecycle {
   private final EmbeddedQpidProperties properties;
   private final SystemLauncher qpidLauncher;
 
+  @Getter
+  private Integer port;
+
   private boolean running;
 
+  /**
+   * The EmbeddedBroker will automatically start provided the embedded.broker.auto-start property is true (default behaviour).
+   * Although this class extends SmartLifecycle to provide Springs with ways to auto handle start up and shutdown, it needed to be
+   * force started because it needs to start immediately during instantiation to avoid the situation were other beans in
+   * client code needs to make use of the broker but starting is delayed. Doing so ensures that the broker is started as soon as
+   * possible.
+   */
   public EmbeddedBroker(final EmbeddedQpidProperties properties) {
     this.properties = properties;
     this.qpidLauncher = new SystemLauncher(new SystemLauncherListener.DefaultSystemLauncherListener());
@@ -77,9 +88,12 @@ public class EmbeddedBroker implements SmartLifecycle {
     attributes.put("initialConfigurationLocation", initialConfig.toExternalForm());
     attributes.put("startupLoggedToSystemOut", this.properties.getLogs().isStartupLoggedToSystemOut());
 
-    attributes.put("qpid.amqp_port", this.properties.getPort());
-    attributes.put("qpid.username", this.properties.getUsername());
-    attributes.put("qpid.password", this.properties.getPassword());
+    determinePort();
     return attributes;
+  }
+
+  private void determinePort() {
+    this.port = this.properties.getPort() == 0 ? SocketUtils.findAvailableTcpPort() : this.properties.getPort();
+    System.setProperty("qpid.amqp_port", this.port.toString());
   }
 }
