@@ -16,7 +16,7 @@ Spring Boot context
 <dependency>
   <groupId>net.clintonmagro.embedded.qpid</groupId>
   <artifactId>embedded-qpid-spring-boot-starter</artifactId>
-  <version>1.0.5</version>
+  <version>1.0.6</version>
   <scope>test</scope>
 </dependency>
 ```
