@@ -53,8 +53,8 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
 
-    <spring-boot.version>2.0.0.RELEASE</spring-boot.version>
-    <apache-qpid.version>7.0.2</apache-qpid.version>
+    <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
+    <apache-qpid.version>8.0.2</apache-qpid.version>
     <junit-params.version>1.1.1</junit-params.version>
 
     <jgitflow-plugin.version>1.0-m5.1</jgitflow-plugin.version>
@@ -62,7 +62,7 @@
     <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
     <maven-javadoc-plugin.version>3.0.0</maven-javadoc-plugin.version>
     <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
-    <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
+    <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
   </properties>
 
   <dependencyManagement>
